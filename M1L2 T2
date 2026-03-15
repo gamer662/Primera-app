@@ -1,0 +1,4 @@
+user = input("Ingresa un nombre:  ")
+l = len(user) + 2
+p = "*"
+print("",l * p,"\n",p + user + p,"\n",l * p)
