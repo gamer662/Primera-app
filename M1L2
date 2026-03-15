@@ -1,0 +1,6 @@
+n = "*"
+l = 1
+for i in range(10):
+    print(n * l)
+    l += 1
+
