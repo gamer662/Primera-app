@@ -1,0 +1,14 @@
+import random
+r = random.randint(1,20)
+l = 1
+for i in range(5):
+    print("Intento ",l)
+    l += 1
+    user = int(input("Escribe un número del 1 al 20 "))
+    if user > r:
+        print("Uy tu número es demasiado grande")
+    if user < r:
+        print("Has metido la pata tu número es demasido pequeño")
+    if user == r:
+        print("Has ganado")
+        break
