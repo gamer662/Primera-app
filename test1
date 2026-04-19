@@ -1,0 +1,59 @@
+import discord
+from discord.ext import commands
+import os
+description = """An example bot to showcase the discord.ext.commands extension
+module.
+
+There are a number of utility commands being showcased here."""
+
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
+bot = commands.Bot(command_prefix='$', description=description, intents=intents)
+
+
+@bot.event
+async def on_ready():
+    # Tell the type checker that User is filled up at this point
+    assert bot.user is not None
+
+    print(f'Logged in as {bot.user} (ID: {bot.user.id})')
+    print('------')
+@bot.command()
+async def ayuda_de_no_con_ni(ctx):
+    await ctx.send("""okey, ahora te digo:
+                        1.No tires la basura al suelo, algunos niños tiran la basura al suelo pero tu se un buen niño, no tires la basura al suelo.
+                        2. si tienes basura que tirar clasificada como ahora te digo:
+                        si tienes plastico al azul si tienes vidrio al verde y si tienes carton o papel al azul lo demás al marrón.
+                   
+                        3.si ves basura en el suelo se bueno y tiraba como te la clasifique
+                        cuando termines pon en el chat:$terminado""")
+@bot.command()
+async def ayuda_de_no_con_ado(ctx):
+    await ctx.send("""No tires basura al suelo. Puede que veas a otros hacerlo, pero no es lo suyo. Sé de los que hacen las cosas bien y cuidan el entorno.
+                        Cuando tengas que tirar algo, hazlo bien:
+                        Plástico → contenedor amarillo
+                        Vidrio → contenedor verde
+                        Papel o cartón → contenedor azul
+                        Lo demás → contenedor marrón
+                        Si ves basura en el suelo y puedes hacer algo, recógela y tírala donde corresponde. Es un pequeño gesto, pero ayuda un montón.
+                        cuando ayas terminado pon en el chat:$terminado""")
+@bot.command()
+async def ayuda_de_no_con_ad(ctx):
+    await ctx.send("""Evita tirar basura al suelo. Aunque algunas personas lo hagan, es responsabilidad de cada uno mantener los espacios limpios y actuar con civismo.
+                        Deposita los residuos en el contenedor correspondiente:
+                        Plástico: contenedor amarillo
+                        Vidrio: contenedor verde
+                        Papel y cartón: contenedor azul
+                        Residuos orgánicos: contenedor marrón
+                        Si encuentras basura en el suelo, contribuye al cuidado del entorno recogiéndola y depositándola en el contenedor adecuado según su tipo.
+                        cuando ayas terminado pon en el chat:$terminado""")
+@bot.command()
+async def terminado(ctx):
+    with open('Juegos/im.png', 'rb') as f:
+        ima = discord.File(f)
+    await ctx.send(file=ima)
+
+
+
+bot.run('Mi token secreto va aqui') 
